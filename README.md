@@ -1,53 +1,69 @@
-# Selenium POM Demo (OpenCart: Spaghetti vs POM + Page Factory)
+# Automatizacion Selenium - OpenCart (POM vs Spaghetti)
 
-Proyecto base para explicar patron Page Object Model con comparacion directa contra un test "espagueti" sobre OpenCart.
+Proyecto de automatizacion UI en Java para demostrar el patron **Page Object Model (POM)** frente a un enfoque **espagueti** sobre OpenCart demo.
 
-## 1. Que debes instalar en Windows
+Sitio objetivo:
+- `http://opencart.abstracta.us/index.php?route=common/home`
 
-1. Java 17 (JDK)
-2. Maven 3.9.x
-3. Google Chrome
-4. IntelliJ IDEA (opcional, recomendado)
+## Stack actual
 
-## 2. Verificar instalacion
+- Java 17
+- Maven 3.9+
+- Selenium 4.29.0
+- TestNG 7.11.0
+- WebDriverManager 5.9.3
+- Chrome + ChromeDriver administrado por WebDriverManager
 
-En PowerShell:
+## Estructura principal
+
+- `src/test/java/com/reservassk/base/BaseTest.java`
+  - Configuracion comun de driver (setup/teardown).
+- `src/test/java/com/reservassk/pages/`
+  - `HomePage`, `SearchResultsPage`, `CategoryPage`, `CartPage`.
+  - Encapsulan localizadores y acciones por pagina.
+- `src/test/java/com/reservassk/tests/OpenCartPomTest.java`
+  - Suite limpia con POM.
+- `src/test/java/com/reservassk/tests/OpenCartSpaghettiTest.java`
+  - Ejemplo anti-patron (todo en un solo test).
+- `testng.xml`
+  - Suite que ejecuta ambos enfoques.
+
+## Casos automatizados implementados
+
+Total: **5 casos**
+
+Casos POM (`OpenCartPomTest`):
+1. `homeDebeCargarYMostrarMenuPrincipal`
+2. `busquedaDebeMostrarProductoEsperado`
+3. `categoriaLaptopsDebeAbrirCorrectamente`
+4. `agregarProductoDestacadoDebeReflejarseEnCarrito`
+
+Caso espagueti (`OpenCartSpaghettiTest`):
+1. `agregarProductoDesdeHome_spaghetti`
+
+## Ejecucion
+
+Desde la carpeta `automation-selenium-pom`:
 
 ```powershell
-java -version
-mvn -v
-```
-
-Si `mvn` no aparece, agrega Maven al `PATH`:
-
-- Variable `MAVEN_HOME`: `C:\apache-maven-3.9.x`
-- En `Path`: `%MAVEN_HOME%\bin`
-
-Luego abre una nueva terminal y valida otra vez `mvn -v`.
-
-## 3. Ejecutar pruebas
-
-Desde esta carpeta:
-
-```powershell
-cd automation-selenium-pom
 mvn clean test
 ```
 
-## 4. Estructura
+Para ejecutar solo la suite POM:
 
-- `OpenCartSpaghettiTest`: ejemplo anti-patron (locators, acciones y validaciones en una sola clase).
-- `HomePage`, `SearchResultsPage`, `CategoryPage`, `CartPage`: capas POM con responsabilidades separadas.
-- `OpenCartPomTest`: escenarios limpios usando objetos de pagina.
-- `BaseTest`: setup y teardown reutilizable.
+```powershell
+mvn -Dtest=OpenCartPomTest test
+```
 
-## 5. Sitio bajo prueba
+Para ejecutar solo el test espagueti:
 
-- URL: `http://opencart.abstracta.us/index.php?route=common/home`
+```powershell
+mvn -Dtest=OpenCartSpaghettiTest test
+```
 
-## 6. Flujos automatizados
+## Nota tecnica sobre CDP
 
-- Carga de home y visibilidad de menu principal.
-- Busqueda de producto (`iPhone`) y validacion de resultados.
-- Navegacion por categoria `Laptops & Notebooks`.
-- Agregar producto destacado al carrito y validar contador + carrito.
+Es posible ver advertencias como:
+- `Unable to find version of CDP to use for 145...`
+
+En este proyecto no se usan APIs DevTools directamente, por lo que esa advertencia suele ser informativa y no bloqueante.
