@@ -1,6 +1,6 @@
-# Automatizacion Selenium - OpenCart (POM vs Spaghetti)
+# Automatizacion Selenium - OpenCart (Serenity + Gherkin)
 
-Proyecto de automatizacion UI en Java para demostrar el patron **Page Object Model (POM)** frente a un enfoque **espagueti** sobre OpenCart demo.
+Proyecto de automatizacion UI en Java con **Serenity BDD + Cucumber (Gherkin)** usando Page Objects sobre OpenCart demo.
 
 Sitio objetivo:
 - `http://opencart.abstracta.us/index.php?route=common/home`
@@ -9,57 +9,50 @@ Sitio objetivo:
 
 - Java 17
 - Maven 3.9+
-- Selenium 4.29.0
-- TestNG 7.11.0
-- WebDriverManager 5.9.3
-- Chrome + ChromeDriver administrado por WebDriverManager
+- Serenity BDD 3.9.8
+- Serenity Cucumber 6
+- Chrome
 
 ## Estructura principal
 
-- `src/test/java/com/reservassk/base/BaseTest.java`
-  - Configuracion comun de driver (setup/teardown).
 - `src/test/java/com/reservassk/pages/`
   - `HomePage`, `SearchResultsPage`, `CategoryPage`, `CartPage`.
   - Encapsulan localizadores y acciones por pagina.
-- `src/test/java/com/reservassk/tests/OpenCartPomTest.java`
-  - Suite limpia con POM.
-- `src/test/java/com/reservassk/tests/OpenCartSpaghettiTest.java`
-  - Ejemplo anti-patron (todo en un solo test).
-- `testng.xml`
-  - Suite que ejecuta ambos enfoques.
+- `src/test/java/com/reservassk/runners/OpenCartCucumberTest.java`
+  - Runner de Serenity para ejecutar features.
+- `src/test/java/com/reservassk/stepdefinitions/OpenCartStepDefinitions.java`
+  - Definicion de pasos Gherkin en espanol.
+- `src/test/resources/features/opencart/*.feature`
+  - Casos en lenguaje Gherkin.
+- `serenity.properties`
+  - Configuracion de navegador y reporte Serenity.
 
 ## Casos automatizados implementados
 
-Total: **5 casos**
+Total: **5 escenarios Gherkin**
 
-Casos POM (`OpenCartPomTest`):
-1. `homeDebeCargarYMostrarMenuPrincipal`
-2. `busquedaDebeMostrarProductoEsperado`
-3. `categoriaLaptopsDebeAbrirCorrectamente`
-4. `agregarProductoDestacadoDebeReflejarseEnCarrito`
-
-Caso espagueti (`OpenCartSpaghettiTest`):
-1. `agregarProductoDesdeHome_spaghetti`
+1. Carga correcta de la home.
+2. Busqueda de iPhone.
+3. Apertura de categoria Laptops and Notebooks.
+4. Agregar producto destacado al carrito.
+5. Flujo corto espagueti (sin Page Objects) para agregar iPhone.
 
 ## Ejecucion
 
 Desde la carpeta `automation-selenium-pom`:
 
 ```powershell
-mvn clean test
+mvn clean verify
 ```
 
 Para ejecutar solo la suite POM:
 
 ```powershell
-mvn -Dtest=OpenCartPomTest test
+mvn -Dtest=OpenCartCucumberTest verify
 ```
 
-Para ejecutar solo el test espagueti:
-
-```powershell
-mvn -Dtest=OpenCartSpaghettiTest test
-```
+Reporte Serenity generado en:
+- `target/site/serenity/index.html`
 
 ## Nota tecnica sobre CDP
 
