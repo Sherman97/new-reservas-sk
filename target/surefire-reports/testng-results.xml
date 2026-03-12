@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-03-12T12:24:58 COT" name="OpenCart Selenium Suite" finished-at="2026-03-12T12:25:46 COT" duration-ms="48045">
+    <groups>
+    </groups>
+    <test started-at="2026-03-12T12:24:58 COT" name="OpenCart Spaghetti vs POM" finished-at="2026-03-12T12:25:46 COT" duration-ms="48045">
+      <class name="com.reservassk.tests.OpenCartPomTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.reservassk.tests.OpenCartPomTest@3ce1e309]" started-at="2026-03-12T12:25:06 COT" name="setUp" finished-at="2026-03-12T12:25:08 COT" duration-ms="2303" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="agregarProductoDestacadoDebeReflejarseEnCarrito()[pri:0, instance:com.reservassk.tests.OpenCartPomTest@3ce1e309]" started-at="2026-03-12T12:25:08 COT" name="agregarProductoDestacadoDebeReflejarseEnCarrito" finished-at="2026-03-12T12:25:12 COT" duration-ms="4245" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- agregarProductoDestacadoDebeReflejarseEnCarrito -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.reservassk.tests.OpenCartPomTest@3ce1e309]" started-at="2026-03-12T12:25:12 COT" name="tearDown" finished-at="2026-03-12T12:25:14 COT" duration-ms="1341" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.reservassk.tests.OpenCartPomTest@3ce1e309]" started-at="2026-03-12T12:25:14 COT" name="setUp" finished-at="2026-03-12T12:25:16 COT" duration-ms="2252" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="busquedaDebeMostrarProductoEsperado()[pri:0, instance:com.reservassk.tests.OpenCartPomTest@3ce1e309]" started-at="2026-03-12T12:25:16 COT" name="busquedaDebeMostrarProductoEsperado" finished-at="2026-03-12T12:25:19 COT" duration-ms="2702" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- busquedaDebeMostrarProductoEsperado -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.reservassk.tests.OpenCartPomTest@3ce1e309]" started-at="2026-03-12T12:25:19 COT" name="tearDown" finished-at="2026-03-12T12:25:20 COT" duration-ms="1304" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.reservassk.tests.OpenCartPomTest@3ce1e309]" started-at="2026-03-12T12:25:20 COT" name="setUp" finished-at="2026-03-12T12:25:22 COT" duration-ms="1915" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="categoriaLaptopsDebeAbrirCorrectamente()[pri:0, instance:com.reservassk.tests.OpenCartPomTest@3ce1e309]" started-at="2026-03-12T12:25:22 COT" name="categoriaLaptopsDebeAbrirCorrectamente" finished-at="2026-03-12T12:25:38 COT" duration-ms="16461" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- categoriaLaptopsDebeAbrirCorrectamente -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.reservassk.tests.OpenCartPomTest@3ce1e309]" started-at="2026-03-12T12:25:38 COT" name="tearDown" finished-at="2026-03-12T12:25:40 COT" duration-ms="1700" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.reservassk.tests.OpenCartPomTest@3ce1e309]" started-at="2026-03-12T12:25:40 COT" name="setUp" finished-at="2026-03-12T12:25:42 COT" duration-ms="2161" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="homeDebeCargarYMostrarMenuPrincipal()[pri:0, instance:com.reservassk.tests.OpenCartPomTest@3ce1e309]" started-at="2026-03-12T12:25:42 COT" name="homeDebeCargarYMostrarMenuPrincipal" finished-at="2026-03-12T12:25:45 COT" duration-ms="2426" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- homeDebeCargarYMostrarMenuPrincipal -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.reservassk.tests.OpenCartPomTest@3ce1e309]" started-at="2026-03-12T12:25:45 COT" name="tearDown" finished-at="2026-03-12T12:25:46 COT" duration-ms="1125" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.reservassk.tests.OpenCartPomTest -->
+      <class name="com.reservassk.tests.OpenCartSpaghettiTest">
+        <test-method signature="agregarProductoDesdeHome_spaghetti()[pri:0, instance:com.reservassk.tests.OpenCartSpaghettiTest@1a451d4d]" started-at="2026-03-12T12:24:58 COT" name="agregarProductoDesdeHome_spaghetti" finished-at="2026-03-12T12:25:06 COT" duration-ms="8054" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- agregarProductoDesdeHome_spaghetti -->
+      </class> <!-- com.reservassk.tests.OpenCartSpaghettiTest -->
+    </test> <!-- OpenCart Spaghetti vs POM -->
+  </suite> <!-- OpenCart Selenium Suite -->
+</testng-results>

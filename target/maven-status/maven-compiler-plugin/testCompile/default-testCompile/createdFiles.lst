@@ -1,0 +1,7 @@
+com\reservassk\pages\CategoryPage.class
+com\reservassk\base\BaseTest.class
+com\reservassk\pages\SearchResultsPage.class
+com\reservassk\tests\OpenCartPomTest.class
+com\reservassk\pages\HomePage.class
+com\reservassk\pages\CartPage.class
+com\reservassk\tests\OpenCartSpaghettiTest.class
