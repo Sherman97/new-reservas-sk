@@ -1,0 +1,40 @@
+# IntelliJ / IDE
+.idea/
+*.iml
+out/
+
+# VS Code
+.vscode/
+
+# Maven / Java
+target/
+**/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Test reports / logs
+*.log
+surefire-reports/
+**/surefire-reports/
+test-output/
+**/test-output/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary / lock files
+*~
+*.tmp
+*.temp
+~$*
+
+# Backup de repo Git anidado (no versionar)
+automation-selenium-pom/.git_backup_nested/

@@ -1,0 +1,9 @@
+plugins {
+    id 'base'
+    id 'idea'
+}
+
+allprojects {
+    group = 'com.reservas.sk'
+    version = '1.0-SNAPSHOT'
+}
