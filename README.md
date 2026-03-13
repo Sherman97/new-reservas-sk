@@ -8,7 +8,7 @@ Sitio objetivo:
 ## Estructura
 
 - `new-reservas-sk/` (raiz del repositorio Git)
-- `automation-selenium-pom/` (modulo principal de pruebas)
+- `automation-selenium/` (modulo principal de pruebas)
 - `OLD-HU/`, `REFACTOR-HU/`, `SKAI-INSTRUCTION/` (documentacion y refinamientos)
 
 ## Documentacion de la actividad (Semana 4)
@@ -34,19 +34,18 @@ Existen 2 tipos de HU en `REFACTOR-HU/`:
 Desde la raiz del proyecto:
 
 ```powershell
-.\gradlew :automation-selenium-pom:clean :automation-selenium-pom:test :automation-selenium-pom:aggregate
+.\gradlew :automation-selenium:clean :automation-selenium:test :automation-selenium:aggregate
 ```
 
 Alternativa, entrando al modulo:
 
 ```powershell
-cd automation-selenium-pom
+cd automation-selenium
 ..\gradlew clean test aggregate
 ```
 
 Reporte Serenity:
-- `automation-selenium-pom/target/site/serenity/index.html`
-- `automation-selenium-pom/build/reports/serenity`
+- `automation-selenium/build/reports/serenity`
 
 ## Nota de Git/GitHub
 

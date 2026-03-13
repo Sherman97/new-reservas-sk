@@ -39,7 +39,7 @@ Total: **5 escenarios Gherkin**
 
 ## Ejecucion
 
-Desde la carpeta `automation-selenium-pom`:
+Desde la carpeta `automation-selenium`:
 
 ```powershell
 gradle clean test aggregate
@@ -52,7 +52,7 @@ Con Gradle Wrapper (recomendado cuando lo generes):
 ```
 
 Reporte Serenity generado en:
-- `target/site/serenity/index.html` o `build/reports/serenity`
+- `build/reports/serenity`
 
 ## Nota tecnica sobre CDP
 

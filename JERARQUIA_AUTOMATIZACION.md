@@ -9,22 +9,22 @@ El objetivo funcional es cubrir flujos de negocio visibles:
 - navegar por categorias,
 - agregar al carrito y validar resultado.
 
-## 1) Carpeta base: `automation-selenium-pom`
+## 1) Carpeta base: `automation-selenium`
 
 Aqui nace y se ejecuta toda la automatizacion.
 
 Que hacemos aqui:
-- correr la suite (`mvn clean test`),
+- correr la suite (`gradle clean test aggregate`),
 - mantener configuracion tecnica global,
 - centralizar codigo de pruebas y reportes.
 
-## 2) `pom.xml` (contrato tecnico)
+## 2) `build.gradle` (contrato tecnico)
 
 Aqui se define con que herramientas corre la automatizacion.
 
 Que hacemos aqui:
 - declarar Selenium, TestNG y WebDriverManager,
-- configurar el motor de ejecucion (`surefire`),
+- configurar el motor de ejecucion de pruebas,
 - fijar version de Java del proyecto.
 
 ## 3) `testng.xml` (plan de ejecucion)
@@ -76,15 +76,16 @@ Ejemplos actuales:
 - `OpenCartPomTest`: version limpia y mantenible.
 - `OpenCartSpaghettiTest`: version sin POM para comparar enfoque.
 
-## 7) `target/` (evidencia de ejecucion)
+## 7) `build/` (evidencia de ejecucion)
 
-Es salida automatica de Maven. No se edita.
+Es salida automatica de Gradle. No se edita.
 
 Que hacemos aqui:
 - revisar resultados y trazabilidad de la corrida.
 
 Ruta clave:
-- `target/surefire-reports` (HTML/XML de pruebas).
+- `build/reports/tests` (resultados de pruebas)
+- `build/reports/serenity` (reporte Serenity)
 
 ## Flujo recomendado del equipo
 
@@ -92,4 +93,4 @@ Ruta clave:
 2. Modelar pagina y acciones en `pages/`.
 3. Implementar el caso en `tests/` usando Given/When/Then como guia de lectura.
 4. Ejecutar por `testng.xml`.
-5. Validar evidencia en `target/surefire-reports`.
+5. Validar evidencia en `build/reports/`.

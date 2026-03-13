@@ -14,10 +14,14 @@ target/
 *.war
 *.ear
 
-# Gradle
+# Gradle (cache y artefactos de compilacion)
 .gradle/
+**/.gradle/
 build/
 **/build/
+gradle/wrapper/
+*.gradle.kts.cache
+*.gradle-cache
 
 # Test reports / logs
 *.log
@@ -37,4 +41,4 @@ Thumbs.db
 ~$*
 
 # Backup de repo Git anidado (no versionar)
-automation-selenium-pom/.git_backup_nested/
+automation-selenium/.git_backup_nested/

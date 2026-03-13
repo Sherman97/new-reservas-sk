@@ -10,7 +10,7 @@ El lenguaje ubicuo del proyecto gira sobre estos flujos:
 - agregar al carrito,
 - comparar enfoque limpio (POM) vs enfoque espagueti.
 
-## 1) Carpeta base: `automation-selenium-pom`
+## 1) Carpeta base: `automation-selenium`
 
 Aqui vive toda la automatizacion.
 
@@ -91,13 +91,11 @@ Que hacemos aqui:
 Runner actual:
 - `OpenCartCucumberTest`
 
-## 8) `target/` y `build/` (evidencia)
+## 8) `build/` (evidencia)
 
 Carpeta autogenerada, no se edita.
 
 Rutas utiles:
-- `target/surefire-reports`
-- `target/site/serenity/index.html`
 - `build/reports/serenity`
 
 ## Flujo recomendado del equipo
