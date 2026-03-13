@@ -1,91 +1,64 @@
-# HU-07 (Refinada): Listar ciudades
+**Historia de Usuario: HU-07: Listar Ciudades**
 
-## Historia de usuario
-Como usuario autenticado, quiero consultar el catálogo de ciudades disponibles, con su país asociado, para elegir una ubicación al buscar espacios o crear reservas.
+**Título:**  
+Listar Ciudades
 
-## Alcance funcional
-La funcionalidad expone y presenta una lista de ciudades desde el catálogo de ubicaciones para consumo en dashboard y flujos de reserva.
+**Descripción:**  
+Como usuario autenticado, quiero ver la lista de ciudades disponibles, para seleccionar una ubicación al buscar espacios o crear reservas. La lista debe mostrar ciudades con su nombre y país, y estar ordenada alfabéticamente por nombre de ciudad. Además, debe manejar correctamente situaciones como lista vacía, errores del servicio y actualización en tiempo real.
 
-## Reglas de negocio explícitas
-1. Solo usuarios autenticados pueden consultar la lista.
-2. Por defecto se muestran solo ciudades activas.
-3. La lista se entrega ordenada alfabéticamente por `nombre` (ascendente).
-4. El texto de ciudad y país se presenta en español.
-5. Si no existen ciudades activas, se devuelve lista vacía sin error.
-6. La carga de la lista se ejecuta al entrar al dashboard y puede refrescarse manualmente.
-7. Cambios del catálogo deben reflejarse en un máximo de 60 segundos mediante recarga o sincronización del cliente.
+**Criterios de Aceptación:**
 
-## Criterios de aceptación (Given / When / Then)
-1. **Listado exitoso**
-   - Given un usuario autenticado
-   - When accede al dashboard
-   - Then se consulta `GET /locations/cities` y se muestra la lista de ciudades activas con su país.
+1. **Listado de Ciudades:**
+   - Se muestra una lista de todas las ciudades registradas con su nombre y país.
+   - La lista se carga al acceder al dashboard y está ordenada alfabéticamente por nombre de ciudad.
 
-2. **Sin resultados**
-   - Given un usuario autenticado
-   - When no existen ciudades activas
-   - Then la API responde `200 OK` con lista vacía y la interfaz muestra estado vacío.
+2. **Manejo de Estado de Vacía:**
+   - Si no hay ciudades registradas, se muestra el mensaje "No hay ciudades disponibles."
 
-3. **Orden de resultados**
-   - Given ciudades activas registradas
-   - When se consulta el endpoint
-   - Then la respuesta llega ordenada alfabéticamente por nombre de ciudad.
+3. **Manejo de Errores:**
+   - Si ocurre un error al cargar la lista, se muestra un mensaje de error al usuario indicando "Ocurrió un error al cargar las ciudades. Por favor, inténtalo de nuevo más tarde."
 
-4. **Error de servicio**
-   - Given un usuario autenticado
-   - When el servicio de ubicaciones falla o no está disponible
-   - Then la interfaz muestra mensaje de error y opción de reintento.
+4. **Actualización en Tiempo Real:**
+   - Si se agregan o eliminan ciudades mientras el usuario está en el dashboard, la lista debe actualizarse automáticamente para reflejar los cambios.
 
-5. **No autenticado**
-   - Given un usuario sin sesión válida
-   - When intenta consultar el listado
-   - Then la API responde `401 Unauthorized`.
+5. **Datos Adicionales:**
+   - La lista debe mostrar ciudades con su ID y código de ciudad además de su nombre y país.
 
-## Contrato de respuesta
-### Response 200
-```json
-{
-  "items": [
-    {
-      "id": "uuid",
-      "nombre": "Bogota",
-      "pais": "Colombia",
-      "codigoPais": "CO",
-      "activa": true
-    }
-  ],
-  "total": 1
-}
-```
+6. **Filtrado y Búsqueda:**
+   - La lista debe permitir la búsqueda y filtrado por nombre de ciudad o país.
 
-### Errores esperados
-- `401 Unauthorized`: sesión inválida o ausente.
-- `503 Service Unavailable`: dependencia no disponible.
+7. **Paginación:**
+   - Si el número de ciudades excede un cierto umbral, la lista debe estar paginada para facilitar la navegación.
 
-## Comportamiento en dashboard
-1. Carga inicial automática al abrir dashboard.
-2. Estado de carga visible mientras responde el endpoint.
-3. Estado vacío con mensaje funcional cuando `items = []`.
-4. Estado de error con botón de reintentar.
-5. Si el rol es administrador, la visualización base es igual; la diferencia de capacidades queda fuera de esta HU.
+8. **Accesibilidad y Formato:**
+   - La presentación de la lista debe cumplir con estándares de accesibilidad y tener un formato claro y legible.
 
-## Criterios INVEST (evaluación)
-- **Independiente:** parcialmente, depende de existencia del catálogo de ciudades.
-- **Negociable:** sí, admite ajustes de orden, paginación, filtros y actualización.
-- **Valiosa:** alta, habilita el paso de selección geográfica en reservas.
-- **Estimable:** sí, al definir alcance de datos, errores y comportamiento de UI.
-- **Pequeña:** parcialmente, se mantiene pequeña si no incluye filtros avanzados.
-- **Testeable:** sí, con escenarios de éxito, vacío, autenticación y falla de servicio.
+9. **Restricciones de Perfil:**
+   - La visualización de ciudades puede estar sujeta a restricciones basadas en el perfil del usuario, las cuales se definirán en un futuro.
 
-## Preguntas de cierre para refinamiento con PO
-1. ¿La respuesta debe incluir solo ciudades activas o también inactivas para roles específicos?
-2. ¿Se requiere paginación desde esta HU o basta lista completa?
-3. ¿Debe existir búsqueda por texto (ciudad/país) en este alcance?
-4. ¿El país se muestra como nombre, código ISO o ambos?
-5. ¿La actualización del catálogo debe ser en tiempo real (push) o por recarga periódica?
-6. ¿Hay umbral de performance objetivo (por ejemplo, respuesta < 300 ms con 5.000 ciudades)?
-7. ¿Se requieren métricas de uso y auditoría de consultas?
+10. **Auditoría:**
+   - El acceso o consulta de la lista de ciudades debe ser auditado para fines de seguridad y trazabilidad.
 
-## Datos técnicos
-- **Endpoint:** `GET /locations/cities`
-- **Servicio:** `locations-service`
+**Datos Técnicos:**
+
+- **Endpoint:** GET /locations/cities
+- **Servicio:** locations-service
+
+---
+
+**Preguntas para la Reunión de Refinamiento:**
+
+1. **Manejo de Estado de Vacía:** ¿Qué mensaje se debe mostrar si no hay ciudades registradas?
+2. **Orden de la Lista:** ¿Cómo debe estar ordenada la lista (alfabéticamente por nombre, país, etc.)?
+3. **Funcionalidad de Búsqueda y Filtrado:** ¿Se requiere alguna funcionalidad de búsqueda o filtrado en la lista?
+4. **Manejo de Errores:** ¿Qué mensaje debe mostrarse si ocurre un error al cargar la lista?
+5. **Actualización en Tiempo Real:** ¿La lista debe actualizarse automáticamente si se añaden o eliminan ciudades mientras el usuario está en el dashboard?
+6. **Datos Adicionales:** ¿Qué otros datos además de nombre y país deben mostrarse en la lista (ID, código de ciudad, etc.)?
+7. **Paginación:** ¿Qué umbral se debe establecer para la paginación de la lista?
+8. **Accesibilidad y Formato:** ¿Qué estándares de accesibilidad y formatos específicos se deben cumplir?
+9. **Restricciones de Perfil:** ¿Cómo se definirán las restricciones de visualización de ciudades basadas en el perfil del usuario en un futuro?
+10. **Auditoría:** ¿Qué información debe ser auditada para fines de seguridad y trazabilidad?
+
+---
+
+**

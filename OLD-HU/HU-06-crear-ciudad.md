@@ -11,6 +11,9 @@ Al crearse exitosamente, se emite el evento locations.city.created.
 Se devuelve la ciudad creada con su ID.
 Datos técnicos:
 
-## Endpoint: POST /locations/cities
-## Servicio: locations-service
-## Tabla: cities
+## Endpoint:
+- POST /locations/cities
+## Servicio: 
+- locations-service
+## Tabla: 
+- cities
