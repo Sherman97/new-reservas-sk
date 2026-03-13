@@ -1,62 +1,43 @@
-# Automatizacion Selenium - OpenCart (Serenity + Gherkin)
+# new-reservas-sk
 
-Proyecto de automatizacion UI en Java con **Serenity BDD + Cucumber (Gherkin)** usando Page Objects sobre OpenCart demo.
+Proyecto de automatizacion UI con **Serenity BDD + Cucumber (Gherkin)** para OpenCart.
 
 Sitio objetivo:
 - `http://opencart.abstracta.us/index.php?route=common/home`
 
+## Estructura
+
+- `new-reservas-sk/` (raiz del repositorio Git)
+- `automation-selenium-pom/` (modulo principal de pruebas)
+- `OLD-HU/`, `REFACTOR-HU/`, `SKAI-INSTRUCTION/` (documentacion y refinamientos)
+
 ## Stack actual
 
 - Java 17
-- Maven 3.9+
+- Gradle 8+
 - Serenity BDD 3.9.8
-- Serenity Cucumber 6
+- Serenity Cucumber
 - Chrome
-
-## Estructura principal
-
-- `src/test/java/com/reservassk/pages/`
-  - `HomePage`, `SearchResultsPage`, `CategoryPage`, `CartPage`.
-  - Encapsulan localizadores y acciones por pagina.
-- `src/test/java/com/reservassk/runners/OpenCartCucumberTest.java`
-  - Runner de Serenity para ejecutar features.
-- `src/test/java/com/reservassk/stepdefinitions/OpenCartStepDefinitions.java`
-  - Definicion de pasos Gherkin en espanol.
-- `src/test/resources/features/opencart/*.feature`
-  - Casos en lenguaje Gherkin.
-- `serenity.properties`
-  - Configuracion de navegador y reporte Serenity.
-
-## Casos automatizados implementados
-
-Total: **5 escenarios Gherkin**
-
-1. Carga correcta de la home.
-2. Busqueda de iPhone.
-3. Apertura de categoria Laptops and Notebooks.
-4. Agregar producto destacado al carrito.
-5. Flujo corto espagueti (sin Page Objects) para agregar iPhone.
 
 ## Ejecucion
 
-Desde la carpeta `automation-selenium-pom`:
+Desde la raiz del proyecto:
 
 ```powershell
-mvn clean verify
+.\gradlew :automation-selenium-pom:clean :automation-selenium-pom:test :automation-selenium-pom:aggregate
 ```
 
-Para ejecutar solo la suite POM:
+Alternativa, entrando al modulo:
 
 ```powershell
-mvn -Dtest=OpenCartCucumberTest verify
+cd automation-selenium-pom
+..\gradlew clean test aggregate
 ```
 
-Reporte Serenity generado en:
-- `target/site/serenity/index.html`
+Reporte Serenity:
+- `automation-selenium-pom/target/site/serenity/index.html`
+- `automation-selenium-pom/build/reports/serenity`
 
-## Nota tecnica sobre CDP
+## Nota de Git/GitHub
 
-Es posible ver advertencias como:
-- `Unable to find version of CDP to use for 145...`
-
-En este proyecto no se usan APIs DevTools directamente, por lo que esa advertencia suele ser informativa y no bloqueante.
+El repositorio Git quedo centralizado en la raiz `new-reservas-sk`, para que GitHub detecte y publique todos los archivos del proyecto desde un solo punto.
