@@ -11,6 +11,16 @@ Sitio objetivo:
 - `automation-selenium-pom/` (modulo principal de pruebas)
 - `OLD-HU/`, `REFACTOR-HU/`, `SKAI-INSTRUCTION/` (documentacion y refinamientos)
 
+## Documentacion de la actividad (Semana 4)
+
+- En la carpeta `entregable/` se encuentran los archivos correspondientes a la actividad de la semana 4.
+- En la carpeta `OLD-HU/` estan las historias de usuario originales que se manejaron.
+- En la carpeta `REFACTOR-HU/` estan las historias de usuario refactorizadas.
+
+Existen 2 tipos de HU en `REFACTOR-HU/`:
+- HU creadas por **SKAI**: identificables por el formato `HU-<numero>-refinamiento` (por ejemplo, `HU-06-refinamiento.md`, `HU-07-refinamiento.md`).
+- HU creadas por **GPT-5.3**: identificables por el formato `HU-<nombre>-REFACTOR-GPT` (por ejemplo, `HU-06-REFACTOR-GPT.md`, `HU-07-REFACTOR-GPT.md`, `HU-NOTIFICACIONES-REFACTOR-GPT.md`).
+
 ## Stack actual
 
 - Java 17
