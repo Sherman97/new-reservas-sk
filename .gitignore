@@ -41,4 +41,4 @@ Thumbs.db
 ~$*
 
 # Backup de repo Git anidado (no versionar)
-automation-selenium/.git_backup_nested/
+automatizacion-gradle/automation-selenium/.git_backup_nested/
